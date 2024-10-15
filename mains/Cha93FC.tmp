@@ -1,0 +1,271 @@
+[gd_scene load_steps=23 format=3 uid="uid://dm8ct126nueqj"]
+
+[ext_resource type="PackedScene" uid="uid://ty8en21an60v" path="res://members/body/GymBody.tscn" id="1_ejajb"]
+[ext_resource type="PackedScene" uid="uid://bcpwdlmek7d5s" path="res://ui/GymButton.tscn" id="2_lw1wg"]
+[ext_resource type="Texture2D" uid="uid://cuhchvlrxqdnl" path="res://ui/arm_arrow_up.png" id="2_rw2um"]
+[ext_resource type="FontFile" uid="uid://cbw76d0owrqj5" path="res://urban_20_v1/Urban 20.ttf" id="3_xnhiw"]
+[ext_resource type="Texture2D" uid="uid://c653smesag2lx" path="res://ui/torso_arrow_up.png" id="4_tmcdf"]
+[ext_resource type="Texture2D" uid="uid://dg3ijpb0u7r74" path="res://ui/leg_arrow_up.png" id="5_wqjj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdass"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqf80"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh0en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdass")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqf80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpbsc"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40n73"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7y2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpbsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40n73")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7iwv"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfwuh"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfr7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7iwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfwuh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnsdh"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laa7r"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wy3j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnsdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laa7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xqmh"]
+atlas = ExtResource("5_wqjj1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qirl"]
+atlas = ExtResource("5_wqjj1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bpbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qirl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykd23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qirl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterCreation" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="GymBody" parent="." instance=ExtResource("1_ejajb")]
+position = Vector2(157, 158)
+scale = Vector2(7, 7)
+
+[node name="CharacterControl" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 324)
+offset_left = 295.0
+offset_right = 502.0
+offset_bottom = 324.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CharacterControl"]
+layout_mode = 2
+columns = 3
+
+[node name="Control" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownArm" parent="CharacterControl/GridContainer/Control" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control/DownArm"]
+sprite_frames = SubResource("SpriteFrames_fh0en")
+autoplay = "default"
+frame_progress = 0.400983
+centered = false
+flip_h = true
+
+[node name="OptionLbl1" type="Label" parent="CharacterControl/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Arm 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpArm" parent="CharacterControl/GridContainer/Control2" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control2/UpArm"]
+sprite_frames = SubResource("SpriteFrames_h7y2t")
+autoplay = "default"
+frame_progress = 0.815423
+centered = false
+
+[node name="Control3" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownTorso" parent="CharacterControl/GridContainer/Control3" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="TorsoButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control3/DownTorso"]
+sprite_frames = SubResource("SpriteFrames_sfr7f")
+autoplay = "default"
+frame_progress = 0.479112
+centered = false
+flip_h = true
+
+[node name="OptionLbl2" type="Label" parent="CharacterControl/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Body 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpTorso" parent="CharacterControl/GridContainer/Control4" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="TorsoButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control4/UpTorso"]
+sprite_frames = SubResource("SpriteFrames_wy3j8")
+autoplay = "default"
+frame_progress = 0.970405
+centered = false
+
+[node name="Control5" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownLegs" parent="CharacterControl/GridContainer/Control5" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+offset_right = 71.0
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control5/DownLegs"]
+sprite_frames = SubResource("SpriteFrames_2bpbn")
+autoplay = "default"
+frame_progress = 0.658034
+centered = false
+flip_h = true
+
+[node name="OptionLbl3" type="Label" parent="CharacterControl/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Leg 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpLegs" parent="CharacterControl/GridContainer/Control6" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="LegButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control6/UpLegs"]
+sprite_frames = SubResource("SpriteFrames_ykd23")
+autoplay = "default"
+frame_progress = 0.318212
+centered = false
+
+[node name="Confirm" type="Button" parent="CharacterControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Done"
+
+[connection signal="pressed" from="CharacterControl/GridContainer/Control/DownArm" to="GymBody" method="cycle_arm_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control2/UpArm" to="GymBody" method="cycle_arm_down"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control3/DownTorso" to="GymBody" method="cycle_upper_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control4/UpTorso" to="GymBody" method="cycle_upper_down"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control5/DownLegs" to="GymBody" method="cycle_legs_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control6/UpLegs" to="GymBody" method="cycle_legs_down"]

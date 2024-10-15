@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca85vf7rl3gjg"]
+
+[ext_resource type="Texture2D" uid="uid://dadfrdrmhhh5l" path="res://members/body/gym_members.png" id="1_05do3"]
+[ext_resource type="Script" path="res://members/body/body_part_sprite.gd" id="2_tcdl4"]
+
+[node name="BodyPartSprite" type="Sprite2D"]
+texture = ExtResource("1_05do3")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_tcdl4")

@@ -1,0 +1,269 @@
+[gd_scene load_steps=43 format=3 uid="uid://cop8d1emorwyh"]
+
+[ext_resource type="Script" path="res://mains/UpgradeStore/upgrade_store.gd" id="1_4uoio"]
+[ext_resource type="PackedScene" uid="uid://b20dt68x3yojd" path="res://mains/UpgradeStore/UpgradeButton.tscn" id="1_182ad"]
+[ext_resource type="Texture2D" uid="uid://ctirboliyyfmx" path="res://ui/muscle_gain.png" id="2_sqojm"]
+[ext_resource type="Texture2D" uid="uid://pnqcqribqkx7" path="res://mains/UpgradeStore/4hour_fitness.png" id="2_v5k7l"]
+[ext_resource type="Texture2D" uid="uid://beu2p4vmjgtod" path="res://mains/UpgradeStore/4hour_fitness_hover.png" id="3_ibl14"]
+[ext_resource type="FontFile" uid="uid://cbw76d0owrqj5" path="res://urban_20_v1/Urban 20.ttf" id="3_rul54"]
+[ext_resource type="Texture2D" uid="uid://cudxx73psp2dv" path="res://mains/UpgradeStore/4hour_fitness_pressed.png" id="4_jiks0"]
+[ext_resource type="Texture2D" uid="uid://d3ts0gkf14sb8" path="res://mains/UpgradeStore/4hour_fitness_disabled.png" id="5_jf6mp"]
+[ext_resource type="Texture2D" uid="uid://rqe1s1huwu3d" path="res://mains/UpgradeStore/8hour_fitness.png" id="5_jower"]
+[ext_resource type="Texture2D" uid="uid://col5hkahqy5iq" path="res://ui/fat_burn.png" id="5_t7w42"]
+[ext_resource type="Texture2D" uid="uid://dyq4bualcvm54" path="res://mains/UpgradeStore/12hour_fitness.png" id="6_4mxhl"]
+[ext_resource type="Texture2D" uid="uid://4oqbrjtuw78r" path="res://ui/dollar_sign.png" id="7_4r7op"]
+[ext_resource type="Texture2D" uid="uid://d3l51uj4wwosu" path="res://mains/UpgradeStore/8hour_fitness_hover.png" id="7_e4tuy"]
+[ext_resource type="Texture2D" uid="uid://1v1rok7obg6i" path="res://mains/UpgradeStore/word_of_mouth.png" id="7_qkx7g"]
+[ext_resource type="Texture2D" uid="uid://ceh1klrna25b2" path="res://mains/UpgradeStore/8hour_fitness_pressed.png" id="8_0nr5r"]
+[ext_resource type="Texture2D" uid="uid://br2w71k870bot" path="res://mains/UpgradeStore/marketing_101.png" id="8_088r7"]
+[ext_resource type="Texture2D" uid="uid://b54qyuyrom2ut" path="res://mains/UpgradeStore/more_juice_icon.png" id="9_6i360"]
+[ext_resource type="Texture2D" uid="uid://c2mdrku4pvt34" path="res://mains/UpgradeStore/8hour_fitness_disabled.png" id="9_efsxk"]
+[ext_resource type="Texture2D" uid="uid://cxdt388fu7gt1" path="res://mains/UpgradeStore/even_more_juice_icon.png" id="10_qdskq"]
+[ext_resource type="Texture2D" uid="uid://cq2mqj3ntjyof" path="res://mains/UpgradeStore/12hour_fitness_hover.png" id="11_8ac7v"]
+[ext_resource type="Texture2D" uid="uid://tt0mvi4132mf" path="res://mains/UpgradeStore/more_weights.png" id="11_4220d"]
+[ext_resource type="Texture2D" uid="uid://lr8kfvxncvij" path="res://mains/UpgradeStore/12hour_fitness_pressed.png" id="12_838ts"]
+[ext_resource type="Texture2D" uid="uid://cq0w17iy606lq" path="res://mains/UpgradeStore/even_more_weights.png" id="12_v6738"]
+[ext_resource type="Texture2D" uid="uid://cx4suvgw8elyn" path="res://mains/UpgradeStore/12hour_fitness_disabled.png" id="13_b27g5"]
+[ext_resource type="Texture2D" uid="uid://dnya8w1lxg0xv" path="res://mains/UpgradeStore/word_of_mouth_hover.png" id="15_wcx32"]
+[ext_resource type="Texture2D" uid="uid://cpywkacx6bhj8" path="res://mains/UpgradeStore/word_of_mouth_pressed.png" id="16_fvepk"]
+[ext_resource type="Texture2D" uid="uid://cs8inaa60p4fw" path="res://mains/UpgradeStore/word_of_mouth_disabled.png" id="17_eq5x6"]
+[ext_resource type="Texture2D" uid="uid://kemb81gg5l4c" path="res://mains/UpgradeStore/marketing_101_hover.png" id="19_4tkbm"]
+[ext_resource type="Texture2D" uid="uid://c2h3cm5bbweln" path="res://mains/UpgradeStore/marketing_101_pressed.png" id="20_11q7u"]
+[ext_resource type="Texture2D" uid="uid://dn6jxkgycmb4y" path="res://mains/UpgradeStore/marketing_101_disabled.png" id="21_h01nh"]
+[ext_resource type="Texture2D" uid="uid://6qkrjx2rc8t2" path="res://mains/UpgradeStore/more_juice_icon_hover.png" id="23_n5o24"]
+[ext_resource type="Texture2D" uid="uid://djyxpfoh7pf34" path="res://mains/UpgradeStore/more_juice_icon_pressed.png" id="24_o7snf"]
+[ext_resource type="Texture2D" uid="uid://d1arswodmvt8k" path="res://mains/UpgradeStore/more_juice_icon_disabled.png" id="25_au12s"]
+[ext_resource type="Texture2D" uid="uid://bkqm4uh4t5ni5" path="res://mains/UpgradeStore/more_weights_hover.png" id="28_v48r6"]
+[ext_resource type="Texture2D" uid="uid://btc24is8groux" path="res://mains/UpgradeStore/more_weights_pressed.png" id="29_5x1uu"]
+[ext_resource type="Texture2D" uid="uid://cfc6kw2ovkvuc" path="res://mains/UpgradeStore/more_weights_disabled.png" id="30_pw4ps"]
+[ext_resource type="Texture2D" uid="uid://bi4e3hhqn70tl" path="res://mains/UpgradeStore/even_more_juice_icon_hover.png" id="32_nwjpm"]
+[ext_resource type="Texture2D" uid="uid://c4fvc4uwc74sm" path="res://mains/UpgradeStore/even_more_weights_hover.png" id="32_p8p6t"]
+[ext_resource type="Texture2D" uid="uid://bv4en42t0q4um" path="res://mains/UpgradeStore/even_more_juice_icon_pressed.png" id="33_2jdii"]
+[ext_resource type="Texture2D" uid="uid://bya2wdhj7no1u" path="res://mains/UpgradeStore/even_more_weights_pressed.png" id="33_344bh"]
+[ext_resource type="Texture2D" uid="uid://bpm833n3pa0ey" path="res://mains/UpgradeStore/even_more_juice_icon_disabled.png" id="34_ehf00"]
+[ext_resource type="Texture2D" uid="uid://cxg07q564q7wh" path="res://mains/UpgradeStore/even_more_weights_disabled.png" id="34_rjajq"]
+
+[node name="UpgradeStore" type="CanvasLayer"]
+script = ExtResource("1_4uoio")
+
+[node name="PlayerStatus" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(320, 32)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -352.0
+offset_top = 20.0
+offset_right = -32.0
+offset_bottom = 52.0
+grow_horizontal = 0
+
+[node name="MuscleGained" type="HBoxContainer" parent="PlayerStatus"]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerStatus/MuscleGained"]
+layout_mode = 2
+texture = ExtResource("2_sqojm")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PlayerStatus/MuscleGained"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_rul54")
+theme_override_font_sizes/font_size = 32
+text = "0"
+vertical_alignment = 1
+
+[node name="FatBurnt" type="HBoxContainer" parent="PlayerStatus"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerStatus/FatBurnt"]
+layout_mode = 2
+texture = ExtResource("5_t7w42")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PlayerStatus/FatBurnt"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_rul54")
+theme_override_font_sizes/font_size = 32
+text = "0"
+vertical_alignment = 1
+
+[node name="Money" type="HBoxContainer" parent="PlayerStatus"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerStatus/Money"]
+layout_mode = 2
+texture = ExtResource("7_4r7op")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="PlayerStatus/Money"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_rul54")
+theme_override_font_sizes/font_size = 32
+text = "0"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -224.0
+offset_right = 320.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Hour" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="FourHour" parent="HBoxContainer/Hour" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("2_v5k7l")
+hover_texture = ExtResource("3_ibl14")
+pressed_texture = ExtResource("4_jiks0")
+disabled_texture = ExtResource("5_jf6mp")
+is_locked = false
+is_purchased = false
+muscle_cost = 150
+burn_cost = 150
+title = "4 Hour fitness"
+
+[node name="EightHour" parent="HBoxContainer/Hour" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("5_jower")
+hover_texture = ExtResource("7_e4tuy")
+pressed_texture = ExtResource("8_0nr5r")
+disabled_texture = ExtResource("9_efsxk")
+is_locked = true
+is_purchased = false
+muscle_cost = 500
+burn_cost = 500
+title = "8 Hour fitness"
+
+[node name="TwelveHour" parent="HBoxContainer/Hour" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("6_4mxhl")
+hover_texture = ExtResource("11_8ac7v")
+pressed_texture = ExtResource("12_838ts")
+disabled_texture = ExtResource("13_b27g5")
+is_locked = true
+is_purchased = false
+muscle_cost = 1500
+burn_cost = 1500
+title = "12 Hour fitness"
+
+[node name="Ad" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="WordOfMouth" parent="HBoxContainer/Ad" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("7_qkx7g")
+hover_texture = ExtResource("15_wcx32")
+pressed_texture = ExtResource("16_fvepk")
+disabled_texture = ExtResource("17_eq5x6")
+is_locked = false
+is_purchased = false
+muscle_cost = 150
+burn_cost = 200
+title = "Word of Mouth"
+
+[node name="Marketing" parent="HBoxContainer/Ad" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("8_088r7")
+hover_texture = ExtResource("19_4tkbm")
+pressed_texture = ExtResource("20_11q7u")
+disabled_texture = ExtResource("21_h01nh")
+is_locked = true
+is_purchased = false
+muscle_cost = 100
+burn_cost = 300
+title = "Marketing 101"
+
+[node name="Juice" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Juiced" parent="HBoxContainer/Juice" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("9_6i360")
+hover_texture = ExtResource("23_n5o24")
+pressed_texture = ExtResource("24_o7snf")
+disabled_texture = ExtResource("25_au12s")
+is_purchased = false
+muscle_cost = 0
+burn_cost = 200
+title = "Juiced"
+
+[node name="MaxJuice" parent="HBoxContainer/Juice" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("10_qdskq")
+hover_texture = ExtResource("32_nwjpm")
+pressed_texture = ExtResource("33_2jdii")
+disabled_texture = ExtResource("34_ehf00")
+is_locked = true
+is_purchased = false
+muscle_cost = 0
+burn_cost = 1000
+title = "Faterade"
+
+[node name="Weight" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="WeightTraining" parent="HBoxContainer/Weight" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("11_4220d")
+hover_texture = ExtResource("28_v48r6")
+pressed_texture = ExtResource("29_5x1uu")
+disabled_texture = ExtResource("30_pw4ps")
+is_purchased = false
+muscle_cost = 200
+burn_cost = 0
+title = "Weighted"
+
+[node name="MaxWeight" parent="HBoxContainer/Weight" instance=ExtResource("1_182ad")]
+layout_mode = 2
+normal_texture = ExtResource("12_v6738")
+hover_texture = ExtResource("32_p8p6t")
+pressed_texture = ExtResource("33_344bh")
+disabled_texture = ExtResource("34_rjajq")
+is_locked = true
+is_purchased = false
+muscle_cost = 1000
+burn_cost = 0
+title = "Maxed"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 555.0
+offset_right = 620.0
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("3_rul54")
+theme_override_font_sizes/font_size = 64
+text = "Done"
+
+[connection signal="pressed" from="HBoxContainer/Hour/FourHour" to="." method="_on_four_hour_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hour/EightHour" to="." method="_on_eight_hour_pressed"]
+[connection signal="pressed" from="HBoxContainer/Hour/TwelveHour" to="." method="_on_twelve_hour_pressed"]
+[connection signal="pressed" from="HBoxContainer/Ad/WordOfMouth" to="." method="_on_word_of_mouth_pressed"]
+[connection signal="pressed" from="HBoxContainer/Ad/Marketing" to="." method="_on_marketing_pressed"]
+[connection signal="pressed" from="HBoxContainer/Juice/Juiced" to="." method="_on_juiced_pressed"]
+[connection signal="pressed" from="HBoxContainer/Juice/MaxJuice" to="." method="_on_max_juice_pressed"]
+[connection signal="pressed" from="HBoxContainer/Weight/WeightTraining" to="." method="_on_weight_training_pressed"]
+[connection signal="pressed" from="HBoxContainer/Weight/MaxWeight" to="." method="_on_max_weight_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

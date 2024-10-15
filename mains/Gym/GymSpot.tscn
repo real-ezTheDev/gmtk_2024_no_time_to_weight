@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctp26hrqd8qrd"]
+
+[ext_resource type="Script" path="res://mains/Gym/exercise_spot.gd" id="1_txof4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7art"]
+radius = 34.1321
+
+[node name="spot1" type="Area2D"]
+monitoring = false
+script = ExtResource("1_txof4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e7art")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -35.0
+offset_right = 22.0
+offset_bottom = -12.0
+text = "Used"

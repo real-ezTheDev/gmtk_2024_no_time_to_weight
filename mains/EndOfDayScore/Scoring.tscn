@@ -1,0 +1,242 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5pfy5ms7wfon"]
+
+[ext_resource type="Texture2D" uid="uid://2lrh5dbq768q" path="res://mains/EndOfDayScore/scale.png" id="1_0lh8s"]
+[ext_resource type="Script" path="res://mains/EndOfDayScore/scoring.gd" id="1_8p0vk"]
+[ext_resource type="Script" path="res://mains/Gym/hunger_tutorial.gd" id="2_3r25v"]
+[ext_resource type="Texture2D" uid="uid://ctirboliyyfmx" path="res://ui/muscle_gain.png" id="3_c0528"]
+[ext_resource type="Texture2D" uid="uid://col5hkahqy5iq" path="res://ui/fat_burn.png" id="4_coj81"]
+[ext_resource type="FontFile" uid="uid://cbw76d0owrqj5" path="res://urban_20_v1/Urban 20.ttf" id="4_vo4u5"]
+[ext_resource type="Texture2D" uid="uid://4oqbrjtuw78r" path="res://ui/dollar_sign.png" id="5_d403h"]
+[ext_resource type="AudioStream" uid="uid://caj324p1pp3wv" path="res://aud/pinch.wav" id="8_nq6tr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sancd"]
+size = Vector2(100, 900)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34iui"]
+size = Vector2(100, 900)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6and"]
+size = Vector2(452, 198)
+
+[node name="Scoring" type="Node2D"]
+script = ExtResource("1_8p0vk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoringTutorial" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0466666, 0, 0.14, 0.796078)
+script = ExtResource("2_3r25v")
+
+[node name="FatBurn" type="Sprite2D" parent="CanvasLayer/ScoringTutorial"]
+position = Vector2(860, 486)
+scale = Vector2(4, 4)
+texture = ExtResource("4_coj81")
+
+[node name="MuscleGain" type="Sprite2D" parent="CanvasLayer/ScoringTutorial"]
+position = Vector2(301, 383)
+scale = Vector2(4, 4)
+texture = ExtResource("3_c0528")
+
+[node name="Label" type="Label" parent="CanvasLayer/ScoringTutorial"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 66.0
+offset_right = 658.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "Scoring"
+
+[node name="Label2" type="Label" parent="CanvasLayer/ScoringTutorial"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 170.0
+offset_right = 982.0
+offset_bottom = 435.0
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "Fat & Muscle Gained/Lost
+are Tallied at the End.
+
+Gain 4500 Muslc Pts &
+Burn 8000 Fat Pts
+to WIN
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scale" type="Node2D" parent="."]
+position = Vector2(258, 377)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Scale"]
+position = Vector2(4, -62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/RigidBody2D"]
+position = Vector2(-194, 0)
+shape = SubResource("RectangleShape2D_sancd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Scale/RigidBody2D"]
+position = Vector2(199, 0)
+shape = SubResource("RectangleShape2D_34iui")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Scale/RigidBody2D"]
+position = Vector2(-2, 275)
+shape = SubResource("RectangleShape2D_e6and")
+
+[node name="Sprite" type="Sprite2D" parent="Scale/RigidBody2D"]
+position = Vector2(2, 199)
+scale = Vector2(3, 3)
+texture = ExtResource("1_0lh8s")
+
+[node name="DropSpawn" type="Node2D" parent="."]
+position = Vector2(263, -281)
+
+[node name="ScoreResult" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(581, 648)
+offset_left = 538.0
+offset_right = 1119.0
+offset_bottom = 648.0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="MuscleGain" type="HBoxContainer" parent="ScoreResult"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreResult/MuscleGain"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("3_c0528")
+
+[node name="plus" type="Label" parent="ScoreResult/MuscleGain"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="minus_sign" type="Label" parent="ScoreResult/MuscleGain"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = " - "
+vertical_alignment = 1
+
+[node name="minus" type="Label" parent="ScoreResult/MuscleGain"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="equal_sign" type="Label" parent="ScoreResult/MuscleGain"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = " = "
+vertical_alignment = 1
+
+[node name="total" type="Label" parent="ScoreResult/MuscleGain"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="FatBurn" type="HBoxContainer" parent="ScoreResult"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreResult/FatBurn"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("4_coj81")
+
+[node name="plus" type="Label" parent="ScoreResult/FatBurn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="minus_sign" type="Label" parent="ScoreResult/FatBurn"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = " - "
+vertical_alignment = 1
+
+[node name="minus" type="Label" parent="ScoreResult/FatBurn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="equal_sign" type="Label" parent="ScoreResult/FatBurn"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = " = "
+vertical_alignment = 1
+
+[node name="total" type="Label" parent="ScoreResult/FatBurn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreResult"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreResult/HBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("5_d403h")
+
+[node name="total" type="Label" parent="ScoreResult/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("4_vo4u5")
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="DropSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nq6tr")
+volume_db = -12.0

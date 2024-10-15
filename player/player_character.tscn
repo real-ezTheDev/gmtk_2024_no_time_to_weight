@@ -1,0 +1,232 @@
+[gd_scene load_steps=13 format=3 uid="uid://dodxoshfrqor0"]
+
+[ext_resource type="Script" path="res://mains/Gym/player_charcter.gd" id="1_krbi0"]
+[ext_resource type="Texture2D" uid="uid://byxhik45jtrti" path="res://members/body/drop_shadow.png" id="2_xf57t"]
+[ext_resource type="PackedScene" uid="uid://ty8en21an60v" path="res://members/body/GymBody.tscn" id="3_vj52g"]
+[ext_resource type="Texture2D" uid="uid://q338sthoj1bx" path="res://equipments/barbell.png" id="4_0en38"]
+[ext_resource type="Texture2D" uid="uid://cn02yi4ce871n" path="res://equipments/juice.png" id="5_big2n"]
+
+[sub_resource type="Animation" id="Animation_apxfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Items:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, -17)]
+}
+
+[sub_resource type="Animation" id="Animation_ie0d1"]
+resource_name = "idle"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.85), Vector2(0.9, 1.2), Vector2(1, 0.9), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(-9.53674e-07, -4), Vector2(-7.15262e-07, 1), Vector2(-4.76849e-07, -2), Vector2(-2.38436e-07, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_30tw2"]
+resource_name = "walk"
+length = 0.400003
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, -6.6638e-05), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.174533, 0.0, -0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Items:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.216667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-0.5, -17), Vector2(-0.5, -24), Vector2(-0.5, -17), Vector2(-0.5, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_qtd8p"]
+resource_name = "work"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.85), Vector2(0.9, 1.2), Vector2(1, 0.9), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(-9.53674e-07, -4), Vector2(-7.15262e-07, 1), Vector2(-4.76849e-07, -2), Vector2(-2.38436e-07, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk80p"]
+_data = {
+"RESET": SubResource("Animation_apxfk"),
+"idle": SubResource("Animation_ie0d1"),
+"walk": SubResource("Animation_30tw2"),
+"work": SubResource("Animation_qtd8p")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0i3l8"]
+radius = 7.5
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywuo2"]
+radius = 17.066
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+position = Vector2(666.5, 339)
+script = ExtResource("1_krbi0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, 13)
+texture = ExtResource("2_xf57t")
+
+[node name="GymBody" parent="." instance=ExtResource("3_vj52g")]
+self_modulate = Color(1, 1, 1, 0.243137)
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jk80p")
+}
+autoplay = "work"
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_0i3l8")
+
+[node name="Feelers" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Feelers"]
+position = Vector2(0, 6.5)
+shape = SubResource("CircleShape2D_ywuo2")
+
+[node name="Items" type="Node2D" parent="."]
+position = Vector2(-0.5, -17)
+
+[node name="Weight" type="Sprite2D" parent="Items"]
+visible = false
+texture = ExtResource("4_0en38")
+region_rect = Rect2(32, 16, 16, 16)
+
+[node name="Juice" type="Sprite2D" parent="Items"]
+visible = false
+position = Vector2(0, -5)
+texture = ExtResource("5_big2n")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[connection signal="body_entered" from="Feelers" to="." method="_on_feelers_body_entered"]
+[connection signal="body_exited" from="Feelers" to="." method="_on_feelers_body_exited"]

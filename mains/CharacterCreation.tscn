@@ -1,0 +1,685 @@
+[gd_scene load_steps=39 format=3 uid="uid://dm8ct126nueqj"]
+
+[ext_resource type="PackedScene" uid="uid://ty8en21an60v" path="res://members/body/GymBody.tscn" id="1_ejajb"]
+[ext_resource type="Script" path="res://mains/character_creation.gd" id="1_k4b03"]
+[ext_resource type="PackedScene" uid="uid://bcpwdlmek7d5s" path="res://ui/GymButton.tscn" id="2_lw1wg"]
+[ext_resource type="Texture2D" uid="uid://cuhchvlrxqdnl" path="res://ui/arm_arrow_up.png" id="2_rw2um"]
+[ext_resource type="FontFile" uid="uid://cbw76d0owrqj5" path="res://urban_20_v1/Urban 20.ttf" id="3_xnhiw"]
+[ext_resource type="Texture2D" uid="uid://byxhik45jtrti" path="res://members/body/drop_shadow.png" id="4_hhck6"]
+[ext_resource type="Texture2D" uid="uid://c653smesag2lx" path="res://ui/torso_arrow_up.png" id="4_tmcdf"]
+[ext_resource type="Texture2D" uid="uid://dg3ijpb0u7r74" path="res://ui/leg_arrow_up.png" id="5_wqjj1"]
+[ext_resource type="Script" path="res://mains/color_picker.gd" id="8_ftwvr"]
+[ext_resource type="Texture2D" uid="uid://brv8r2a5f324i" path="res://ui/simple_arrow.png" id="9_abby4"]
+[ext_resource type="Texture2D" uid="uid://belkk61m2kjgw" path="res://ui/simple_arrow_pressed.png" id="10_u5l3r"]
+[ext_resource type="Texture2D" uid="uid://cdp5kngfr0axq" path="res://ui/simple_arrow_hover.png" id="11_8lah0"]
+[ext_resource type="Texture2D" uid="uid://dox7mw73xjdbg" path="res://mains/Locker2.png" id="12_ikxe3"]
+[ext_resource type="AudioStream" uid="uid://d3qgs3n6ligym" path="res://aud/hover.wav" id="14_44hln"]
+[ext_resource type="AudioStream" uid="uid://d1ej8u231yf5b" path="res://aud/click.wav" id="15_kqf0f"]
+[ext_resource type="AudioStream" uid="uid://demhi475virnw" path="res://aud/bass.wav" id="16_33k3d"]
+[ext_resource type="AudioStream" uid="uid://caj324p1pp3wv" path="res://aud/pinch.wav" id="17_6mgiv"]
+[ext_resource type="AudioStream" uid="uid://osm8o3ei8rpi" path="res://aud/groovy_gym.wav" id="18_0p3b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdass"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqf80"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh0en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdass")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqf80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpbsc"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40n73"]
+atlas = ExtResource("2_rw2um")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7y2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpbsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40n73")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7iwv"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfwuh"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfr7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7iwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfwuh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnsdh"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laa7r"]
+atlas = ExtResource("4_tmcdf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wy3j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnsdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laa7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xqmh"]
+atlas = ExtResource("5_wqjj1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qirl"]
+atlas = ExtResource("5_wqjj1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bpbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qirl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykd23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qirl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_b0fim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterControl:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(295, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(157, 158)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FaceControl:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(295, -338)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GymBody/TextureRect:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.57, 0.57, 0.57, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bwotl"]
+resource_name = "character_complete"
+step = 0.0166667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(172, -0.25, 0, 0.25, 0, 281, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(275, -0.25, 0, 0.25, 0, 188.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(14, -0.25, 0, 0.25, 0, 4.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GymBody:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(14, -0.25, 0, 0.25, 0, 4.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FaceControl:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(295, -0.25, 0, 0.25, 0, 700, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FaceControl:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GymBody/TextureRect:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.87936, 0.8736, 0.96, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_34fol"]
+resource_name = "transition_to_face"
+length = 1.28334
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.483333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(157, 158), Vector2(172, 275)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.483333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 7), Vector2(14, 14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterControl:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.483333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(295, 0), Vector2(700, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FaceControl:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0.516667, 1.28333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(295, -338), Vector2(295, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rnnh5"]
+_data = {
+"RESET": SubResource("Animation_b0fim"),
+"character_complete": SubResource("Animation_bwotl"),
+"transition_to_face": SubResource("Animation_34fol")
+}
+
+[node name="CharacterCreation" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_k4b03")
+
+[node name="GymBody" parent="." instance=ExtResource("1_ejajb")]
+show_behind_parent = true
+position = Vector2(157, 158)
+scale = Vector2(7, 7)
+
+[node name="TextureRect" type="TextureRect" parent="GymBody"]
+self_modulate = Color(0.57, 0.57, 0.57, 1)
+z_index = -1
+offset_left = -64.2857
+offset_top = -42.1071
+offset_right = 127.714
+offset_bottom = 65.8929
+scale = Vector2(0.68, 0.68)
+texture = ExtResource("12_ikxe3")
+expand_mode = 3
+
+[node name="Shadow" type="Sprite2D" parent="GymBody"]
+modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(-0.142857, 12.7143)
+texture = ExtResource("4_hhck6")
+
+[node name="CharacterControl" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 324)
+offset_left = 295.0
+offset_right = 531.0
+offset_bottom = 324.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Randomize" type="Button" parent="CharacterControl"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Randomize"
+
+[node name="GridContainer" type="GridContainer" parent="CharacterControl"]
+layout_mode = 2
+columns = 3
+
+[node name="Control" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownArm" parent="CharacterControl/GridContainer/Control" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control/DownArm"]
+sprite_frames = SubResource("SpriteFrames_fh0en")
+autoplay = "default"
+frame_progress = 0.400983
+centered = false
+flip_h = true
+
+[node name="OptionLbl1" type="Label" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Buff"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpArm" parent="CharacterControl/GridContainer/Control2" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control2/UpArm"]
+sprite_frames = SubResource("SpriteFrames_h7y2t")
+autoplay = "default"
+frame_progress = 0.815423
+centered = false
+
+[node name="Control3" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownTorso" parent="CharacterControl/GridContainer/Control3" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="TorsoButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control3/DownTorso"]
+sprite_frames = SubResource("SpriteFrames_sfr7f")
+autoplay = "default"
+frame_progress = 0.479112
+centered = false
+flip_h = true
+
+[node name="OptionLbl2" type="Label" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Buff"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpTorso" parent="CharacterControl/GridContainer/Control4" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="TorsoButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control4/UpTorso"]
+sprite_frames = SubResource("SpriteFrames_wy3j8")
+autoplay = "default"
+frame_progress = 0.970405
+centered = false
+
+[node name="Control5" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="DownLegs" parent="CharacterControl/GridContainer/Control5" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+offset_right = 71.0
+
+[node name="ArmButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control5/DownLegs"]
+sprite_frames = SubResource("SpriteFrames_2bpbn")
+autoplay = "default"
+frame_progress = 0.658034
+centered = false
+flip_h = true
+
+[node name="OptionLbl3" type="Label" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Buff"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control6" type="Control" parent="CharacterControl/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="UpLegs" parent="CharacterControl/GridContainer/Control6" instance=ExtResource("2_lw1wg")]
+layout_mode = 2
+
+[node name="LegButton" type="AnimatedSprite2D" parent="CharacterControl/GridContainer/Control6/UpLegs"]
+sprite_frames = SubResource("SpriteFrames_ykd23")
+autoplay = "default"
+frame_progress = 0.318212
+centered = false
+
+[node name="Confirm" type="Button" parent="CharacterControl"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Next"
+
+[node name="FaceControl" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 324)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 295.0
+offset_top = -338.0
+offset_right = 531.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ColorPicker" type="GridContainer" parent="FaceControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 4
+script = ExtResource("8_ftwvr")
+
+[node name="Color1" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.8, 0.216, 0.216, 1)
+
+[node name="Color2" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.88, 0.53944, 0.1232, 1)
+
+[node name="Color3" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.633333, 1, 0, 1)
+
+[node name="Color4" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.0795, 0.53, 0.184617, 1)
+
+[node name="Color5" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.2236, 0.86, 0.82818, 1)
+
+[node name="Color6" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0, 0.255, 0.85, 1)
+
+[node name="Color7" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.544667, 0, 0.86, 1)
+
+[node name="Color8" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0.84, 0.2772, 0.76496, 1)
+
+[node name="Color9" type="ColorRect" parent="FaceControl/ColorPicker"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GridContainer" type="GridContainer" parent="FaceControl"]
+layout_mode = 2
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="HairLeftButton" type="TextureButton" parent="FaceControl/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_abby4")
+texture_pressed = ExtResource("10_u5l3r")
+texture_hover = ExtResource("11_8lah0")
+
+[node name="HairOptionLbl" type="Label" parent="FaceControl/GridContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Hair 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HairRightButton" type="TextureButton" parent="FaceControl/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_abby4")
+texture_pressed = ExtResource("10_u5l3r")
+texture_hover = ExtResource("11_8lah0")
+flip_h = true
+
+[node name="AccLeftButton" type="TextureButton" parent="FaceControl/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_abby4")
+texture_pressed = ExtResource("10_u5l3r")
+texture_hover = ExtResource("11_8lah0")
+
+[node name="AccOptionLbl" type="Label" parent="FaceControl/GridContainer"]
+custom_minimum_size = Vector2(164, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Accessory 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccRightButton" type="TextureButton" parent="FaceControl/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_abby4")
+texture_pressed = ExtResource("10_u5l3r")
+texture_hover = ExtResource("11_8lah0")
+flip_h = true
+
+[node name="Button" type="Button" parent="FaceControl"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_xnhiw")
+theme_override_font_sizes/font_size = 32
+text = "Done"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rnnh5")
+}
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_44hln")
+volume_db = -8.0
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_kqf0f")
+volume_db = -5.0
+
+[node name="DoneSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_33k3d")
+
+[node name="PickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_6mgiv")
+volume_db = -10.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_0p3b5")
+volume_db = -8.0
+autoplay = true
+
+[connection signal="pressed" from="CharacterControl/Randomize" to="." method="_on_randomize_pressed"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control/DownArm" to="GymBody" method="cycle_arm_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control2/UpArm" to="GymBody" method="cycle_arm_down"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control3/DownTorso" to="GymBody" method="cycle_upper_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control4/UpTorso" to="GymBody" method="cycle_upper_down"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control5/DownLegs" to="GymBody" method="cycle_legs_up"]
+[connection signal="pressed" from="CharacterControl/GridContainer/Control6/UpLegs" to="GymBody" method="cycle_legs_down"]
+[connection signal="pressed" from="CharacterControl/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="color_changed" from="FaceControl/ColorPicker" to="GymBody" method="update_hair_color"]
+[connection signal="gui_input" from="FaceControl/ColorPicker" to="FaceControl/ColorPicker" method="_on_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color1" to="FaceControl/ColorPicker" method="_on_color_1_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color2" to="FaceControl/ColorPicker" method="_on_color_2_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color3" to="FaceControl/ColorPicker" method="_on_color_3_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color4" to="FaceControl/ColorPicker" method="_on_color_4_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color5" to="FaceControl/ColorPicker" method="_on_color_5_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color6" to="FaceControl/ColorPicker" method="_on_color_6_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color7" to="FaceControl/ColorPicker" method="_on_color_7_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color8" to="FaceControl/ColorPicker" method="_on_color_8_gui_input"]
+[connection signal="gui_input" from="FaceControl/ColorPicker/Color9" to="FaceControl/ColorPicker" method="_on_color_9_gui_input"]
+[connection signal="pressed" from="FaceControl/GridContainer/HairLeftButton" to="." method="_on_click_sound"]
+[connection signal="pressed" from="FaceControl/GridContainer/HairLeftButton" to="GymBody" method="cycle_hair_down"]
+[connection signal="pressed" from="FaceControl/GridContainer/HairRightButton" to="." method="_on_click_sound"]
+[connection signal="pressed" from="FaceControl/GridContainer/HairRightButton" to="GymBody" method="cycle_hair_up"]
+[connection signal="pressed" from="FaceControl/GridContainer/AccLeftButton" to="." method="_on_click_sound"]
+[connection signal="pressed" from="FaceControl/GridContainer/AccLeftButton" to="GymBody" method="cycle_acc_down"]
+[connection signal="pressed" from="FaceControl/GridContainer/AccRightButton" to="." method="_on_click_sound"]
+[connection signal="pressed" from="FaceControl/GridContainer/AccRightButton" to="GymBody" method="cycle_acc_up"]
+[connection signal="pressed" from="FaceControl/Button" to="." method="_on_button_pressed"]

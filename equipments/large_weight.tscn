@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmg3f0hssex6l"]
+
+[ext_resource type="Script" path="res://equipments/weight.gd" id="1_abmur"]
+[ext_resource type="Texture2D" uid="uid://cx2aoy8soon7d" path="res://equipments/weights.png" id="1_d37up"]
+[ext_resource type="Material" uid="uid://7728eaj5l4dc" path="res://interactable_shader.tres" id="2_ru355"]
+
+[node name="LargeWeight" type="CharacterBody2D"]
+script = ExtResource("1_abmur")
+weight_value = 3
+
+[node name="Sprite" type="CanvasGroup" parent="."]
+material = ExtResource("2_ru355")
+
+[node name="Sprite" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("1_d37up")
+region_enabled = true
+region_rect = Rect2(32, 17, 16, 16)

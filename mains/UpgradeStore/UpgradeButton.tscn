@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://b20dt68x3yojd"]
+
+[ext_resource type="Script" path="res://mains/UpgradeStore/upgrade_button.gd" id="1_f022y"]
+[ext_resource type="Texture2D" uid="uid://pnqcqribqkx7" path="res://mains/UpgradeStore/4hour_fitness.png" id="1_s1pk8"]
+[ext_resource type="FontFile" uid="uid://cbw76d0owrqj5" path="res://urban_20_v1/Urban 20.ttf" id="2_bvw0y"]
+[ext_resource type="Texture2D" uid="uid://ctirboliyyfmx" path="res://ui/muscle_gain.png" id="3_m73lt"]
+[ext_resource type="Texture2D" uid="uid://cv5dbdo14143v" path="res://mains/UpgradeStore/locked.png" id="3_q3h4h"]
+[ext_resource type="Texture2D" uid="uid://4oqbrjtuw78r" path="res://ui/dollar_sign.png" id="3_qgroq"]
+[ext_resource type="Texture2D" uid="uid://col5hkahqy5iq" path="res://ui/fat_burn.png" id="4_bhbfm"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+script = ExtResource("1_f022y")
+is_locked = null
+is_purchased = null
+muscle_cost = null
+burn_cost = null
+title = null
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("1_s1pk8")
+stretch_mode = 0
+
+[node name="Purchased" type="Sprite2D" parent="."]
+position = Vector2(61, 63)
+scale = Vector2(2, 2)
+texture = ExtResource("3_qgroq")
+
+[node name="Locked" type="Sprite2D" parent="."]
+position = Vector2(119, 119)
+texture = ExtResource("3_q3h4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bvw0y")
+theme_override_font_sizes/font_size = 32
+text = "4 Hour Fitness"
+
+[node name="Muscle" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MuscleReq" type="TextureRect" parent="VBoxContainer/Muscle"]
+layout_mode = 2
+texture = ExtResource("3_m73lt")
+
+[node name="Label" type="Label" parent="VBoxContainer/Muscle"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bvw0y")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Fat" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Fat"]
+layout_mode = 2
+texture = ExtResource("4_bhbfm")
+
+[node name="Label" type="Label" parent="VBoxContainer/Fat"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bvw0y")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

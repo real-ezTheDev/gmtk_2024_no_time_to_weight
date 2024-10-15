@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb784jak4hgip"]
+
+[ext_resource type="Script" path="res://mains/EndOfDayScore/rigid_customer.gd" id="1_ogx3d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0u1tq"]
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0phux"]
+radius = 14.0
+height = 58.0
+
+[node name="RigidCustomer" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_0u1tq")
+script = ExtResource("1_ogx3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0phux")

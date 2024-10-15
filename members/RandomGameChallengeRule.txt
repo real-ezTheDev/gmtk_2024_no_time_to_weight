@@ -1,0 +1,7 @@
+Random Game Maker Challenge:
+
+1. Roll d4 as multiplier
+2. Spin Genre Wheel
+3. Flip Coin as Multiplier for Theme
+4. Spin Theme Wheel
+5. Spin Modifier Wheel

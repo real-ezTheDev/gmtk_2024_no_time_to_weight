@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://ty8en21an60v"]
+
+[ext_resource type="Shader" path="res://members/body/gym_body_character.gdshader" id="1_32i86"]
+[ext_resource type="PackedScene" uid="uid://ca85vf7rl3gjg" path="res://members/body/BodyPartSprite.tscn" id="1_dyjwm"]
+[ext_resource type="Script" path="res://members/body/gym_body.gd" id="1_grby7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u2je"]
+shader = ExtResource("1_32i86")
+shader_parameter/line_thickness = 0.0
+shader_parameter/line_color = Color(0.800667, 1, 0.77, 1)
+
+[sub_resource type="Animation" id="Animation_vgepf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arm:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ctnak"]
+resource_name = "carry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arm:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -9.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqy7m"]
+_data = {
+"RESET": SubResource("Animation_vgepf"),
+"carry": SubResource("Animation_ctnak")
+}
+
+[node name="GymBody" type="CanvasGroup"]
+material = SubResource("ShaderMaterial_8u2je")
+script = ExtResource("1_grby7")
+
+[node name="Face" parent="." instance=ExtResource("1_dyjwm")]
+position = Vector2(0, -8)
+region_rect = Rect2(0, 48, 16, 16)
+part = 3
+
+[node name="Hair" parent="." instance=ExtResource("1_dyjwm")]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -10)
+region_rect = Rect2(0, 208, 16, 16)
+part = 13
+
+[node name="Upper" parent="." instance=ExtResource("1_dyjwm")]
+region_rect = Rect2(0, 16, 16, 16)
+part = 1
+
+[node name="Legs" parent="." instance=ExtResource("1_dyjwm")]
+position = Vector2(0, 8)
+region_rect = Rect2(0, 32, 16, 16)
+part = 2
+
+[node name="Arm" parent="." instance=ExtResource("1_dyjwm")]
+
+[node name="Accessory" parent="." instance=ExtResource("1_dyjwm")]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -9)
+region_rect = Rect2(0, 224, 16, 16)
+part = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uqy7m")
+}

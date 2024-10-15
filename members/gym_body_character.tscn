@@ -1,0 +1,486 @@
+[gd_scene load_steps=37 format=3 uid="uid://d7kefdu1jxmm"]
+
+[ext_resource type="PackedScene" uid="uid://ty8en21an60v" path="res://members/body/GymBody.tscn" id="1_d8voj"]
+[ext_resource type="Script" path="res://members/gym_body_character.gd" id="1_xq2rj"]
+[ext_resource type="Texture2D" uid="uid://byxhik45jtrti" path="res://members/body/drop_shadow.png" id="2_l3hhe"]
+[ext_resource type="Texture2D" uid="uid://6xokkvy2afcm" path="res://ui/diag_box.png" id="3_xa3ss"]
+[ext_resource type="FontFile" uid="uid://b52mx726vk6rj" path="res://loser_7_v2/Loser 7.ttf" id="4_dca75"]
+[ext_resource type="Texture2D" uid="uid://s5ggosfpxhwu" path="res://ui/muscle.png" id="4_w5a7k"]
+[ext_resource type="Script" path="res://ui/ui_components/name_lbl.gd" id="5_gmaox"]
+[ext_resource type="Texture2D" uid="uid://c5u7886bfsix7" path="res://ui/fat.png" id="5_mhewa"]
+[ext_resource type="Texture2D" uid="uid://bf8ldkpet27t8" path="res://ui/happy.png" id="5_r66bw"]
+[ext_resource type="Texture2D" uid="uid://cbde63gstkkta" path="res://ui/progress_bar_under.png" id="6_5qhe5"]
+[ext_resource type="Texture2D" uid="uid://dpxeyuc3bql37" path="res://ui/energy.png" id="6_h6cge"]
+[ext_resource type="Texture2D" uid="uid://ddwai87mw2tm6" path="res://ui/hunger.png" id="7_8ldls"]
+[ext_resource type="Script" path="res://ui/ui_components/satisfaction_rect.gd" id="7_fe013"]
+[ext_resource type="Texture2D" uid="uid://b65hltk3sh0x2" path="res://ui/progress_bar_over.png" id="7_y1dxb"]
+[ext_resource type="Texture2D" uid="uid://bhclrjboyxe3c" path="res://ui/progress_bar_progress.png" id="8_vtd67"]
+[ext_resource type="Script" path="res://ui/ui_components/muscle_progress.gd" id="12_xnmm3"]
+[ext_resource type="Texture2D" uid="uid://dcqm771y3d3y5" path="res://ui/ui_components/minus_icon.png" id="14_lndsy"]
+[ext_resource type="Script" path="res://ui/ui_components/fat_progress.gd" id="14_rjvj0"]
+[ext_resource type="Texture2D" uid="uid://cyj0yklj30o0g" path="res://ui/ui_components/plus_icon.png" id="15_hfmqx"]
+[ext_resource type="Script" path="res://ui/ui_components/hunger_progress.gd" id="16_jerql"]
+[ext_resource type="Script" path="res://ui/ui_components/energy_progress.gd" id="18_wetrc"]
+[ext_resource type="Texture2D" uid="uid://b40jpan50bwvm" path="res://members/body/extra_weights.png" id="22_nlmnt"]
+[ext_resource type="Texture2D" uid="uid://s22gffmfg74w" path="res://members/body/customer_emote_box.png" id="23_t2y3o"]
+[ext_resource type="Texture2D" uid="uid://bosic0oiie1f8" path="res://members/body/emote_angry.png" id="24_7hepk"]
+[ext_resource type="Script" path="res://members/emote.gd" id="24_fdy58"]
+[ext_resource type="Texture2D" uid="uid://b7ue5fb2dmmrp" path="res://members/body/emote_happy.png" id="26_vjmx6"]
+
+[sub_resource type="Shader" id="Shader_c4iwk"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+const vec2 OFFSETS[8] = {
+	vec2(-0.71, -0.71), vec2(-1, 0), vec2(-0.71, 0.71), vec2(0, -1), vec2(0, 1),
+	vec2(0.71, -0.71), vec2(1, 0), vec2(0.71, 0.71)
+};
+
+uniform float line_thickness : hint_range(0.0, 10.0);
+uniform vec4 line_color : source_color = vec4(1.0);
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+
+void fragment() {
+	// Get the size of the pixels on screen, and create a variable for out outline
+	vec2 size = line_thickness * SCREEN_PIXEL_SIZE;
+	float outline = 0.0;
+
+	// Project in each direction, and add up the alpha of each projection.
+	// This is similar to picking a point, hit testing in 8 directions, and
+	// returning true if the hit test works
+	for (int i = 0; i < OFFSETS.length(); i++) {
+		vec2 coordinate_offset = SCREEN_UV + size * OFFSETS[i];
+		outline += texture(screen_texture, coordinate_offset).a;
+	}
+
+	// Force outline to 1 or 0
+	outline = sign(outline);
+
+	// Get the texture from the screen
+	vec4 c = texture(screen_texture, SCREEN_UV);
+
+	// If the alpha exists at least a little bit, amplify the colors.
+	// This ensures alpha and colors remain precise even when reading from screen.
+	if (c.a > 0.0001) {
+		c.rgb /= c.a;
+	}
+
+	COLOR = mix(c, line_color, outline - c.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfo57"]
+resource_local_to_scene = true
+shader = SubResource("Shader_c4iwk")
+shader_parameter/line_thickness = 0.0
+shader_parameter/line_color = Color(0.800667, 1, 0.77, 1)
+
+[sub_resource type="Animation" id="Animation_apxfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ie0d1"]
+resource_name = "idle"
+length = 0.56667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.85), Vector2(0.9, 1.2), Vector2(1, 0.9), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(-9.53674e-07, -4), Vector2(-7.15262e-07, 1), Vector2(-4.76849e-07, -2), Vector2(-2.38436e-07, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_30tw2"]
+resource_name = "walk"
+length = 0.400003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, -6.6638e-05), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.174533, 0.0, -0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_t18tm"]
+resource_name = "work"
+length = 0.56667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GymBody:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.85), Vector2(0.9, 1.2), Vector2(1, 0.9), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GymBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(-9.53674e-07, -4), Vector2(-7.15262e-07, 1), Vector2(-4.76849e-07, -2), Vector2(-2.38436e-07, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GymBody:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk80p"]
+_data = {
+"RESET": SubResource("Animation_apxfk"),
+"idle": SubResource("Animation_ie0d1"),
+"walk": SubResource("Animation_30tw2"),
+"work": SubResource("Animation_t18tm")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1myej"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imm84"]
+radius = 31.0644
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vjmcw"]
+load_path = "res://.godot/imported/minus_icon.png-57ecc57c758ba3cc392c123f57a3a715.ctex"
+
+[node name="GymBodyCharacter" type="CharacterBody2D"]
+disable_mode = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_xq2rj")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.407843)
+position = Vector2(0, 13)
+texture = ExtResource("2_l3hhe")
+
+[node name="GymBody" parent="." instance=ExtResource("1_d8voj")]
+self_modulate = Color(1, 1, 1, 0.243137)
+material = SubResource("ShaderMaterial_kfo57")
+
+[node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jk80p")
+}
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_1myej")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_imm84")
+
+[node name="Name" type="NinePatchRect" parent="."]
+process_mode = 1
+offset_left = 5.0
+offset_top = -119.0
+offset_right = 103.0
+offset_bottom = -75.0
+texture = ExtResource("3_xa3ss")
+patch_margin_left = 22
+patch_margin_top = 22
+patch_margin_right = 22
+patch_margin_bottom = 22
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="text" type="Label" parent="Name"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 96.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("4_dca75")
+text = "developerezra"
+horizontal_alignment = 1
+script = ExtResource("5_gmaox")
+
+[node name="satisfaction" type="TextureRect" parent="Name"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 5.0
+texture = ExtResource("5_r66bw")
+stretch_mode = 2
+script = ExtResource("7_fe013")
+
+[node name="StatusWindow" type="NinePatchRect" parent="."]
+process_mode = 1
+offset_left = 5.0
+offset_top = -97.0
+offset_right = 103.0
+offset_bottom = -9.0
+texture = ExtResource("3_xa3ss")
+patch_margin_left = 22
+patch_margin_top = 22
+patch_margin_right = 22
+patch_margin_bottom = 22
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatusWindow"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 89.0
+offset_bottom = 85.0
+alignment = 1
+
+[node name="Muscle" type="TextureRect" parent="StatusWindow/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_w5a7k")
+stretch_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="StatusWindow/VBoxContainer/Muscle"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 12.0
+value = 80.0
+nine_patch_stretch = true
+stretch_margin_left = 13
+stretch_margin_top = 3
+stretch_margin_right = 13
+stretch_margin_bottom = 3
+texture_under = ExtResource("6_5qhe5")
+texture_over = ExtResource("7_y1dxb")
+texture_progress = ExtResource("8_vtd67")
+script = ExtResource("12_xnmm3")
+
+[node name="minus" type="Sprite2D" parent="StatusWindow/VBoxContainer/Muscle"]
+visible = false
+position = Vector2(14, 11)
+texture = ExtResource("14_lndsy")
+
+[node name="plus" type="Sprite2D" parent="StatusWindow/VBoxContainer/Muscle"]
+visible = false
+position = Vector2(14, 11)
+texture = ExtResource("15_hfmqx")
+
+[node name="plus2" type="Sprite2D" parent="StatusWindow/VBoxContainer/Muscle"]
+visible = false
+position = Vector2(17, 15)
+texture = ExtResource("15_hfmqx")
+
+[node name="minus2" type="Sprite2D" parent="StatusWindow/VBoxContainer/Muscle"]
+visible = false
+position = Vector2(17, 15)
+texture = ExtResource("14_lndsy")
+
+[node name="Fat" type="TextureRect" parent="StatusWindow/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_mhewa")
+stretch_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="StatusWindow/VBoxContainer/Fat"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 12.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 13
+stretch_margin_top = 3
+stretch_margin_right = 13
+stretch_margin_bottom = 3
+texture_under = ExtResource("6_5qhe5")
+texture_over = ExtResource("7_y1dxb")
+texture_progress = ExtResource("8_vtd67")
+script = ExtResource("14_rjvj0")
+
+[node name="Hunger" type="TextureRect" parent="StatusWindow/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_8ldls")
+stretch_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="StatusWindow/VBoxContainer/Hunger"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 12.0
+value = 20.0
+nine_patch_stretch = true
+stretch_margin_left = 13
+stretch_margin_top = 3
+stretch_margin_right = 13
+stretch_margin_bottom = 3
+texture_under = ExtResource("6_5qhe5")
+texture_over = ExtResource("7_y1dxb")
+texture_progress = ExtResource("8_vtd67")
+script = ExtResource("16_jerql")
+
+[node name="minus" type="Sprite2D" parent="StatusWindow/VBoxContainer/Hunger"]
+visible = false
+position = Vector2(14, 11)
+texture = SubResource("CompressedTexture2D_vjmcw")
+
+[node name="Energy" type="TextureRect" parent="StatusWindow/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_h6cge")
+stretch_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="StatusWindow/VBoxContainer/Energy"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 12.0
+nine_patch_stretch = true
+stretch_margin_left = 13
+stretch_margin_top = 3
+stretch_margin_right = 13
+stretch_margin_bottom = 3
+texture_under = ExtResource("6_5qhe5")
+texture_over = ExtResource("7_y1dxb")
+texture_progress = ExtResource("8_vtd67")
+script = ExtResource("18_wetrc")
+
+[node name="minus" type="Sprite2D" parent="StatusWindow/VBoxContainer/Energy"]
+visible = false
+position = Vector2(14, 11)
+texture = SubResource("CompressedTexture2D_vjmcw")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 25.0
+max_neighbors = 30
+
+[node name="ExtraWeightIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(12, -11)
+texture = ExtResource("22_nlmnt")
+
+[node name="Emote" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -35)
+texture = ExtResource("23_t2y3o")
+script = ExtResource("24_fdy58")
+
+[node name="Angry" type="Sprite2D" parent="Emote"]
+visible = false
+texture = ExtResource("24_7hepk")
+
+[node name="Happy" type="Sprite2D" parent="Emote"]
+visible = false
+texture = ExtResource("26_vjmx6")
+
+[connection signal="energy_changed" from="." to="." method="_on_energy_changed"]
+[connection signal="energy_changed" from="." to="StatusWindow/VBoxContainer/Energy/TextureProgressBar" method="_on_gym_body_character_energy_changed"]
+[connection signal="fat_changed" from="." to="." method="_on_fat_changed"]
+[connection signal="fat_changed" from="." to="StatusWindow/VBoxContainer/Fat/TextureProgressBar" method="_on_gym_body_character_fat_changed"]
+[connection signal="hunger_changed" from="." to="StatusWindow/VBoxContainer/Hunger/TextureProgressBar" method="_on_gym_body_character_hunger_changed"]
+[connection signal="muscle_changed" from="." to="." method="_on_muscle_changed"]
+[connection signal="muscle_changed" from="." to="StatusWindow/VBoxContainer/Muscle/TextureProgressBar" method="_on_gym_body_character_muscle_changed"]
+[connection signal="name_changed" from="." to="Name/text" method="_on_gym_body_character_name_changed"]
+[connection signal="satisfaction_changed" from="." to="Name/satisfaction" method="_on_gym_body_character_satisfaction_changed"]
+[connection signal="satisfaction_gained" from="." to="Emote" method="_on_gym_body_character_satisfaction_gained"]
+[connection signal="satisfaction_lost" from="." to="Emote" method="_on_gym_body_character_satisfaction_lost"]
+[connection signal="animation_changed" from="CharacterAnimationPlayer" to="." method="_on_character_animation_player_animation_changed"]
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
